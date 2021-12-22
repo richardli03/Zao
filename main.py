@@ -1,14 +1,20 @@
 from greet import *
 from weather import *
-from calendar import *
+from todo import *
 from mood import *
 
 
 def main():
-    greet = greeting()
-    weather = weatherCheck()
-    calendar = calendarCheck() 
-    mood = moodCheck()    
+    greeting()
+    
+    print("\n")
+    weatherCheck()
+
+    print("\n")
+    todo()
+
+    print("\n") 
+    moodCheck()    
 
 if __name__ == "__main__":
     main()
