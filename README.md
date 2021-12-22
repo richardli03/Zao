@@ -8,5 +8,10 @@ Coded in python, when run should
 4. Tell the user what's on their calendar
 5. Option to input how you're feeling that morning
 
-
+Dependencies:
+1. OpenWeatherMap API
+2. requests
+3. json
+4. random
+5. csv
 
