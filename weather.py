@@ -3,16 +3,15 @@
 import requests, json
 
 with open("config.json", "r") as jsonfile:
-    data = json.load(jsonfile)
-    # print("Read successful") 
+    config = json.load(jsonfile)
 
 #honestly relied heavily on a tutorial, but I think I understand how it works now
 
 def weatherCheck():
-    print("Here's the weather for today")
+    
     # Inserting API key and location from config file
-    api_key = data['key']
-    city_name = data["city_name"]
+    api_key = config['key']
+    city_name = config["city_name"]
     
     # fetch_url variable will fetch data from OWM API
     fetch_url = "http://api.openweathermap.org/data/2.5/weather?" + "appid=" + api_key + "&q=" + city_name
@@ -55,4 +54,3 @@ def weatherCheck():
     
     else:
         print(" Sorry! My API doesn't have this city. Try again!")
-
