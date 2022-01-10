@@ -13,13 +13,13 @@ def greeting():
     #print(compliment[1])
     name = compliment[2]  
     #print out compliment
-    author = name if name else ("-anonymous")
+    author = name if name else ("anonymous")
 
     greet = [(compliment[1]), author]
     return greet
     
-
-    
+if __name__ == "__main__":
+    greeting()
 
         
            
