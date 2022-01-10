@@ -1,4 +1,4 @@
 config.json
 Projects.code-workspace
 *.pyc
-_pycache_
+__pycache__

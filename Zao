@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+if [ "$#" -lt 1 ]
+then
+python3 main.py
+exit
+
+else
+echo -e "\c"
+fi
+
+
+if [ "$1" == weather ]
+then
+         python3 weather.py
+fi
