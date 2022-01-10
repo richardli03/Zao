@@ -1,23 +1,22 @@
-#run this file!
+#this will be displayed every time the user opens the terminal
 
 from greet import *
 from weather import *
 from todo import *
-from mood import *
 
 from datetime import *
 
 def main():
-
-    print("\n")
+    current_time = datetime.now().strftime("%A %d, %B, %I:%M:%S %p")
 
     # greeting
-    print("Good morning, Richard!")
-    print(greeting())   
+    print("Hello, Richard! \n")
+    print(greeting()[0])
+    print("from: " + greeting()[1])   
     print("\n")
 
     # current time
-    current_time = datetime.now().strftime("%A %d, %B, %I:%M:%S %p")
+    
     print("It is currently", current_time)
     print("\n")
 
