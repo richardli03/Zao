@@ -4,24 +4,24 @@ import random
 import csv
 
 def greeting():
-    # produce a random compliment
-    key=(random.randrange(1, 6))
-
     # opening the CSV file containing all the compliments
     with open("compliments.csv", "r") as file:
-        reader = csv.reader(file)
+        data = list(csv.reader(file))
+        
+    # defining a counter that will find the key's row, returning that compliment
+    compliment = random.choice(data)
+    #print(compliment[1])
+    name = compliment[2]  
+    #print out compliment
+    author = name if name else ("-anonymous")
 
-        # defining a counter that will find the key's row, returning that compliment
-        row_counter = 0
-        for n in reader:
-            if row_counter == key:
-                print ("'" + n[1] + "'")
-                # listing author name if it exists, otherwise listing anonymous 
-                if not (n[2]):
-                    print ("- anonymous")
-                else:
-                    print ("- " + n[2])
-            row_counter += 1  
+    greet = [(compliment[1]), author]
+    return greet
+    
+
+    
+
+        
            
    
 
