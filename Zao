@@ -16,5 +16,10 @@ if [ "$1" == weather ]
         python3 weather.py
 elif [ "$1" == todo ]
     then 
-        python3 todo.py      
+        python3 todo.py
+
+elif [ "$1" == add ]     
+    then 
+
+        python3 todoAdd.py "$@"
 fi
