@@ -12,6 +12,9 @@ fi
 
 
 if [ "$1" == weather ]
-then
-         python3 weather.py
+    then
+        python3 weather.py
+elif [ "$1" == todo ]
+    then 
+        python3 todo.py      
 fi
