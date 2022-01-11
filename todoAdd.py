@@ -1,6 +1,5 @@
 import sys
 import csv
-import pandas 
 
 
 def add(newTodoString):
@@ -9,7 +8,7 @@ def add(newTodoString):
     with open("todo.csv", "r") as f:
         reader = csv.reader(f)
         length = len(list(reader))
-        print(length)
+        #print(length)
     f.close()
     
     headers = ['index','task']  
@@ -42,4 +41,4 @@ if __name__ == "__main__":
     if add(newTodoString) == True:
         print(str([newTodoString]) + " has been added to your todo list")
     else: 
-        print("Sorry! There was an error adding this item to your todo")
+        print("Sorry! There was an error adding this task to your todo")
