@@ -10,8 +10,27 @@ else
 echo -e "\c"
 fi
 
+if [ "$1" == help ]
+    then 
+        echo "
+        ./Zao                               
+        This function will greet you! 
 
-if [ "$1" == weather ]
+        ./Zao weather                       
+        This function will give you the weather
+
+        ./Zao todo                          
+        This function will display your todo list 
+
+        ./Zao add [text]                    
+        This function will add that item to your todo list at the next index.
+
+        ./Zao fin [index number] + [text]        
+        This function will remove the item at that index on your todo list
+        OR
+        This function will find the closest approximate item on your todo list (according to the text you've entered) and ask you if that's what you want to remove.
+        "
+elif [ "$1" == weather ]
     then
         python3 weather.py
 elif [ "$1" == todo ]
@@ -20,6 +39,9 @@ elif [ "$1" == todo ]
 
 elif [ "$1" == add ]     
     then 
-
         python3 todoAdd.py "$@"
+
+elif [ "$1" == fin ]
+    then
+        python3 todoFin.py "$@"
 fi
