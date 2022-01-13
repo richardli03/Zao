@@ -25,7 +25,7 @@ if [ "$1" == help ]
         ./Zao add [text]                    
         This function will add that item to your todo list at the next index.
 
-        ./Zao fin [index number] + [text]        
+        ./Zao fin [index number] OR [text]        
         This function will remove the item at that index on your todo list
         OR
         This function will find the closest approximate item on your todo list (according to the text you've entered) and ask you if that's what you want to remove.
@@ -44,4 +44,5 @@ elif [ "$1" == add ]
 elif [ "$1" == fin ]
     then
         python3 todoFin.py "$@"
+
 fi
