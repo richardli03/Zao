@@ -9,6 +9,8 @@ from todoAdd import isNumber
 
 def find(input):  
     found = False
+    foundTask = []
+
     with open('todo.csv', 'r') as rf:
         reader = csv.reader(rf)
 
@@ -18,23 +20,44 @@ def find(input):
                 if row[0] == index:
                     # print("row[0]: ")
                     # print(row[0])
+                    # print(row[1])
+                    foundTask.append(row)
                     found = True
         else:
             task = input 
             for row in reader:     
-                if task in row[1]:
+                if task.lower() in row[1].lower():
                     # print("row[1]: ")
-                    # print(row[1])
-                    foundTask = line.append(row[1])
+                    print(row[1])
+                    foundTask.append(row)
                     found = True
     rf.close()
 
     if found == False:
         # print("task not found!")
-        return 
+        return False
     else:
         # print("task found!")
-        return True
+        return foundTask
+
+def validation(task):
+    readyCheck = False
+    while True:
+        yesNo = input("Are you sure you want to finish this task? (y/n) ")
+        if yesNo.lower() == "yes" or yesNo.lower() == "y":
+            readyCheck = True
+            break 
+        elif yesNo.lower() == "no" or yesNo.lower() == "n":
+            readyCheck = False
+            break
+        else:
+            print("please enter yes, no, y, or n")
+    
+    return readyCheck
+    
+
+    
+
 
 
 
@@ -73,16 +96,33 @@ if __name__ == "__main__":
         sys.exit() 
 
     findTask = find(task)
+
+    if findTask == False:
+        print("Sorry, we couldn't find a task matching your input.")
+        sys.exit()
     
     print("We found the following tasks match your input: ")
+    print(findTask)
+    
+    if len(findTask) > 1:
+        choice = input("which task would you like to delete? please enter the number! ")
+        findTask = find(choice)
+        print(findTask)
+    
+    readyCheck = validation(task)
 
+    if readyCheck == False:
+        print("Good luck finishing that task! ")
+        sys.exit()
 
-    # if the task is successfully finished
-    if finish(task) == True:
-        print(str([task]) + " has been finished. Good job! :)")
-    else: 
-        print("Sorry! There was an error finishing this task")
+    print("this task will be deleted")
+    print(findTask)
+    
         
+
+
+
+    
    
 
         
