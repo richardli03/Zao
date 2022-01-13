@@ -54,14 +54,8 @@ def validation(task):
             print("please enter yes, no, y, or n")
     
     return readyCheck
-    
 
-    
-
-
-
-
-#def finish(task):
+def finish(task):
 
     # this code deletes the row in the csv file connected to a certain task name
     lines = list()
@@ -117,6 +111,13 @@ if __name__ == "__main__":
 
     print("this task will be deleted")
     print(findTask)
+
+    finishTask = finish(findTask[0][1])
+
+    if finishTask == True:
+        print(str([findTask]) + " has been finished. Good job! :)")
+    else: 
+        print("Sorry! There was an error finishing this task") 
     
         
 
