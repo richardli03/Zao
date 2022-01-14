@@ -10,6 +10,7 @@ def todo():
     return todoList
 
 if __name__ == "__main__":
+    print("\n")
     print("This is your current todo list: ")
 
     for task in todo():

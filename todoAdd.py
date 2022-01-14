@@ -54,6 +54,7 @@ if __name__ == "__main__":
     newTodo = str(command.replace('"', ""))
 
     if add(newTodo) == True:
+        print("\n")
         print(str([newTodo]) + " has been added to your todo list")
     else: 
         print("Sorry! There was an error adding this task to your todo")

@@ -23,7 +23,7 @@ def find(input):
             for row in reader:     
                 if task.lower() in row[1].lower():
                     # print("row[1]: ")
-                    print(row[1])
+                    # print(row[1])
                     foundTask.append(row)
                     found = True
     rf.close()
@@ -73,23 +73,19 @@ def finish(task):
         todoList[i][0] = i
         taskList.append(todoList[0:][i])
     
-    print(taskList)
+    #print(taskList)
     
     if delCheck == 0:
         return False
     else:
         
-        with open("todo.csv", "r") as rf:
-            reader = csv.reader(rf)
-            next(reader)
-
         with open("todo.csv", "w", newline ='') as wf:
             headers = ['index','task'] 
             dictwriter = csv.DictWriter(wf, fieldnames=headers)
 
             for i in (range(0,len(taskList))): 
                 newTask={'index': taskList[i][0] ,'task': (taskList[i][1])}
-                print(newTask)
+                #print(newTask)
                 dictwriter.writerow(newTask)
                 
         wf.close()
@@ -112,10 +108,12 @@ if __name__ == "__main__":
         print("Sorry, we couldn't find a task matching your input.")
         sys.exit()
     
+    print("\n")
     print("We found the following tasks match your input: ")
     print(findTask)
     
     if len(findTask) > 1:
+        print("\n")
         choice = input("which task would you like to delete? please enter the number! ")
         findTask = find(choice)
         print(findTask)
@@ -130,6 +128,7 @@ if __name__ == "__main__":
     finishTask = finish(findTask[0][1])
 
     if finishTask == True:
+        print("\n")
         print(str([findTask]) + " has been finished. Good job! :)")
     else: 
         print("Sorry! There was an error finishing this task") 
