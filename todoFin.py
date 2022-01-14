@@ -1,11 +1,6 @@
-from re import X
 import sys
 import csv
 from todoAdd import isNumber
-
-# total arguments
-# may be helpful: https://stackoverflow.com/questions/66383841/how-to-write-on-nth-row-in-csv-using-python
-
 
 def find(input):  
     found = False
@@ -58,27 +53,49 @@ def validation(task):
 def finish(task):
 
     # this code deletes the row in the csv file connected to a certain task name
-    lines = list()
+    todoList = list()
     delCheck = 0
 
     with open('todo.csv', 'r') as rf:
         reader = csv.reader(rf)
         for row in reader:
-            lines.append(row)
+            todoList.append(row)
             for field in row:
                 if field == task:
-                    lines.remove(row)
+                    todoList.remove(row)
                     delCheck = 1
     rf.close()
 
+    taskList = list()
+    taskList.append(["index","task"])
+
+    for i in range(1,len(todoList)):
+        todoList[i][0] = i
+        taskList.append(todoList[0:][i])
+    
+    print(taskList)
+    
     if delCheck == 0:
         return False
     else:
-        with open('todo.csv', 'w') as wf:
-            writer = csv.writer(wf)
-            writer.writerows(lines)
+        
+        with open("todo.csv", "r") as rf:
+            reader = csv.reader(rf)
+            next(reader)
+
+        with open("todo.csv", "w", newline ='') as wf:
+            headers = ['index','task'] 
+            dictwriter = csv.DictWriter(wf, fieldnames=headers)
+
+            for i in (range(0,len(taskList))): 
+                newTask={'index': taskList[i][0] ,'task': (taskList[i][1])}
+                print(newTask)
+                dictwriter.writerow(newTask)
+                
         wf.close()
         return True
+
+  
 
 if __name__ == "__main__":
     
@@ -109,8 +126,6 @@ if __name__ == "__main__":
         print("Good luck finishing that task! ")
         sys.exit()
 
-    print("this task will be deleted")
-    print(findTask)
 
     finishTask = finish(findTask[0][1])
 

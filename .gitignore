@@ -2,3 +2,5 @@ config.json
 Projects.code-workspace
 *.pyc
 __pycache__
+test.py
+test2.py
